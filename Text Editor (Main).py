@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter.scrolledtext import *
 import file_menu_functions
 import edit_menu_functions
 import format_menu_functions
@@ -45,17 +46,18 @@ class App(tk.Tk):
         self.help.menu = tk.Menu(self.help, bg=sgrey, fg="white")
         self.help["menu"] = self.help.menu
 
-        self.text_box = tk.Text(
+        self.text_box = ScrolledText(
             self,
             wrap="word",
             bg=sgrey,
             fg="white",
             font=("Helvetica", 13, "bold"),
-            width=26,
+            width=25,
             highlightthickness=0,
             insertbackground="white",
             undo=True,
         )
+        self.text_box.vbar.config(troughcolor = sgrey, bg = 'grey')
         self.text_box.focus_set()
 
         file_menu_functions.main(self, self.text_box, self.file.menu)
