@@ -78,7 +78,7 @@ class Format:
         formatmenu.delete("Write")
         formatmenu.add_command(label="Read Only", command=format_functions.read_only)
 
-    def captilize(self):
+    def capitalize(self):
         text = self.text.get(0.0, END)
         text = text.title()
         self.text.delete(0.0, END)
@@ -100,6 +100,6 @@ def main(text, menubar):
 
     formatmenu.add_command(label="Add Date", command=format_functions.addDate)
 
-    formatmenu.add_command(label="Captilize", command=format_functions.captilize)
+    formatmenu.add_command(label="Capitalize", command=format_functions.capitalize)
 
     formatmenu.add_command(label="Read Only", command=format_functions.read_only)
