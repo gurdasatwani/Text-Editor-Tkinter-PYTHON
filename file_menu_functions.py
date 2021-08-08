@@ -6,7 +6,7 @@ import sys, os
 
 class File:
     def __init__(self, text, root):
-        self.filename = None
+        self.filename = "Untitled.txt"
         self.text = text
         self.root = root
 
@@ -26,7 +26,7 @@ class File:
             showerror(title="Oops!", message="Unable To Save File...")
 
     def save(self):
-        save = asksaveasfile(mode="w", defaultextension=".txt")
+        save = asksaveasfile(mode="w", defaultextension=".txt",initialfile=os.path.basename(str(self.filename)))
         text = self.text.get(0.0, END)
         try:
             save.write(text.rstrip())
@@ -42,6 +42,7 @@ class File:
             text = file.read()
             self.text.delete(0.0, END)
             self.text.insert(0.0, text)
+            file.close()
         except:
             pass
 
