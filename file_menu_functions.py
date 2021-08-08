@@ -14,7 +14,7 @@ class File:
         self.filename = "Untitled.txt"
         self.text.delete(0.0, END)
 
-    def save(self):
+    def save_as(self):
         try:
             self.filename = asksaveasfilename(defaultextension=".txt")
             text = self.text.get(0.0, END)
@@ -25,7 +25,7 @@ class File:
         except:
             showerror(title="Oops!", message="Unable To Save File...")
 
-    def save_as(self):
+    def save(self):
         save = asksaveasfile(mode="w", defaultextension=".txt")
         text = self.text.get(0.0, END)
         try:
