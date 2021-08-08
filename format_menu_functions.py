@@ -1,4 +1,4 @@
-import time
+from datetime import datetime
 from tkinter import *
 from tkinter.colorchooser import askcolor
 from tkinter.font import Font, families
@@ -7,6 +7,7 @@ from tkinter.font import Font, families
 class Format:
     def __init__(self, text):
         self.text = text
+        self.today = datetime.now()
 
     def bold(self):
         try:
@@ -64,13 +65,41 @@ class Format:
         except:
             pass
 
+    def fullDate(self):
+        full_date = self.today.strftime("%B %d, %Y")
+        self.text.insert(INSERT, full_date, "a")
+
+    def addMonth(self):
+        month = self.today.strftime("%B")
+        self.text.insert(INSERT, month, "a")
+
     def addDate(self):
-        full_date = time.localtime()
-        day = str(full_date.tm_mday)
-        month = str(full_date.tm_mon)
-        year = str(full_date.tm_year)
-        date = day + "/" + month + "/" + year
+        date = self.today.strftime("%d")
         self.text.insert(INSERT, date, "a")
+
+    def addYear(self):
+        year = self.today.strftime("%Y")
+        self.text.insert(INSERT, year, "a")
+
+    def addDay(self):
+        day = self.today.strftime("%A")
+        self.text.insert(INSERT, day, "a")
+
+    def fullTime(self):
+        full_time = self.today.strftime("%H:%M:%S")
+        self.text.insert(INSERT, full_time, "a")
+
+    def addHour(self):
+        hour = self.today.strftime("%H")
+        self.text.insert(INSERT, hour, "a")
+
+    def addMin(self):
+        mint = self.today.strftime("%M")
+        self.text.insert(INSERT, mint, "a")
+
+    def addSec(self):
+        sec = self.today.strftime("%S")
+        self.text.insert(INSERT, sec, "a")
 
     def read_only(self):
         self.text.config(state="disable")
@@ -85,6 +114,7 @@ class Format:
     def capitalize(self):
         text = self.text.get(0.0, END)
         text = text.title()
+        text = " ".join(text.split())
         self.text.delete(0.0, END)
         self.text.insert(0.0, text)
 
@@ -92,7 +122,26 @@ class Format:
 def main(text, menubar):
     global formatmenu, format_functions
     formatmenu = menubar
+    submenu = Menu(formatmenu, bg="#110022", fg="white")
     format_functions = Format(text)
+
+    submenu.add_command(label="Full Date", command=format_functions.fullDate)
+
+    submenu.add_command(label="Month", command=format_functions.addMonth)
+
+    submenu.add_command(label="Date", command=format_functions.addDate)
+
+    submenu.add_command(label="Year", command=format_functions.addYear)
+
+    submenu.add_command(label="Day", command=format_functions.addDay)
+
+    submenu.add_command(label="Full Time", command=format_functions.fullTime)
+
+    submenu.add_command(label="Hour", command=format_functions.addHour)
+
+    submenu.add_command(label="Minute", command=format_functions.addMin)
+
+    submenu.add_command(label="Second", command=format_functions.addSec)
 
     formatmenu.add_command(label="Bold", command=format_functions.bold)
 
@@ -102,7 +151,7 @@ def main(text, menubar):
 
     formatmenu.add_command(label="Overstrike", command=format_functions.overstrike)
 
-    formatmenu.add_command(label="Add Date", command=format_functions.addDate)
+    formatmenu.add_cascade(label="Date & Time", menu=submenu)
 
     formatmenu.add_command(label="Capitalize", command=format_functions.capitalize)
 
