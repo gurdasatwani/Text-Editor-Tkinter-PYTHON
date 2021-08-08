@@ -11,6 +11,10 @@ class File:
         self.root = root
 
     def new_file(self):
+        if self.filename:
+            ask = askyesno(title="Save", message="Do You Want To Save This File?")
+            if ask == True:
+                self.save()
         self.filename = "Untitled.txt"
         self.text.delete(0.0, END)
 
@@ -26,7 +30,11 @@ class File:
             showerror(title="Oops!", message="Unable To Save File...")
 
     def save(self):
-        save = asksaveasfile(mode="w", defaultextension=".txt",initialfile=os.path.basename(str(self.filename)))
+        save = asksaveasfile(
+            mode="w",
+            defaultextension=".txt",
+            initialfile=os.path.basename(str(self.filename)),
+        )
         text = self.text.get(0.0, END)
         try:
             save.write(text.rstrip())
