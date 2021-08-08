@@ -11,11 +11,11 @@ class Edit:
 
     def copy(self):
         try:
-        	select = self.text.selection_get()
-        	self.clipboard = select
-        	self.text.tag_remove(SEL, "1.0", END)
+            select = self.text.selection_get()
+            self.clipboard = select
+            self.text.tag_remove(SEL, "1.0", END)
         except:
-        	pass
+            pass
 
     def cut(self):
         try:
