@@ -7,7 +7,6 @@ from tkinter.font import Font, families
 class Format:
     def __init__(self, text):
         self.text = text
-        self.today = datetime.now()
 
     def bold(self):
         try:
@@ -66,39 +65,48 @@ class Format:
             pass
 
     def fullDate(self):
-        full_date = self.today.strftime("%B %d, %Y")
+        full_date = datetime.now()
+        full_date = full_date.strftime("%B %d, %Y")
         self.text.insert(INSERT, full_date, "a")
 
     def addMonth(self):
-        month = self.today.strftime("%B")
+        month = datetime.now()
+        month = month.strftime("%B")
         self.text.insert(INSERT, month, "a")
 
     def addDate(self):
-        date = self.today.strftime("%d")
+        date = datetime.now()
+        date = date.strftime("%d")
         self.text.insert(INSERT, date, "a")
 
     def addYear(self):
-        year = self.today.strftime("%Y")
+        year = datetime.now()
+        year = year.strftime("%Y")
         self.text.insert(INSERT, year, "a")
 
     def addDay(self):
-        day = self.today.strftime("%A")
+        day = datetime.now()
+        day = day.strftime("%A")
         self.text.insert(INSERT, day, "a")
 
     def fullTime(self):
-        full_time = self.today.strftime("%H:%M:%S")
+        full_time = datetime.now()
+        full_time = full_time.strftime("%H:%M:%S")
         self.text.insert(INSERT, full_time, "a")
 
     def addHour(self):
-        hour = self.today.strftime("%H")
+        hour = datetime.now()
+        hour = hour.strftime("%H")
         self.text.insert(INSERT, hour, "a")
 
     def addMin(self):
-        mint = self.today.strftime("%M")
+        mint = datetime.now()
+        mint = mint.strftime("%M")
         self.text.insert(INSERT, mint, "a")
 
     def addSec(self):
-        sec = self.today.strftime("%S")
+        sec = datetime.now()
+        sec = sec.strftime("%S")
         self.text.insert(INSERT, sec, "a")
 
     def read_only(self):
