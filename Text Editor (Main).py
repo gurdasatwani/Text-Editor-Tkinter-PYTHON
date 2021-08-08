@@ -57,7 +57,7 @@ class App(tk.Tk):
             insertbackground="white",
             undo=True,
         )
-        self.text_box.vbar.config(troughcolor = sgrey, bg = 'grey')
+        self.text_box.vbar.config(troughcolor=sgrey, bg="grey")
         self.text_box.focus_set()
 
         file_menu_functions.main(self, self.text_box, self.file.menu)
