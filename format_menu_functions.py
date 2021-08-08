@@ -18,6 +18,7 @@ class Format:
                 bold_font = Font(self.text, self.text.cget("font"))
                 bold_font.configure(weight="bold")
                 self.text.tag_configure("bold", font=bold_font)
+            self.text.tag_remove(SEL, "1.0", END)
         except:
             pass
 
@@ -31,6 +32,7 @@ class Format:
                 italic_font = Font(self.text, self.text.cget("font"))
                 italic_font.configure(slant="italic")
                 self.text.tag_configure("italic", font=italic_font)
+            self.text.tag_remove(SEL, "1.0", END)
         except:
             pass
 
@@ -44,6 +46,7 @@ class Format:
                 underline_font = Font(self.text, self.text.cget("font"))
                 underline_font.configure(underline=1)
                 self.text.tag_configure("underline", font=underline_font)
+            self.text.tag_remove(SEL, "1.0", END)
         except:
             pass
 
@@ -57,6 +60,7 @@ class Format:
                 overstrike_font = Font(self.text, self.text.cget("font"))
                 overstrike_font.configure(overstrike=1)
                 self.text.tag_configure("overstrike", font=overstrike_font)
+            self.text.tag_remove(SEL, "1.0", END)
         except:
             pass
 
