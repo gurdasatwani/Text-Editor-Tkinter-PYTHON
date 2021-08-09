@@ -1,13 +1,13 @@
 # Main Modules
 
 import os
-import tkinter as tk
 import webbrowser
+import tkinter as tk
 from tkinter.font import Font
-from tkinter.filedialog import *
 from datetime import datetime
-from tkinter.scrolledtext import *
+from tkinter.filedialog import *
 from tkinter.messagebox import *
+from tkinter.scrolledtext import *
 from tkinter.simpledialog import *
 
 sgrey = "#110022"
